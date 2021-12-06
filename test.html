@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="html">go</button>
+    <button id="btn">开始关闭</button>
+    <input type="text" id="ipt" value="点击全屏" />
+  </body>
+</html>
+
+<script>
+  window.onload = function () {
+    var notClick = false;
+    window.onresize = function () {
+      var res = checkFull();
+      console.log(res);
+      notClick = res;
+    };
+    html.onclick = function () {
+      window.location.href = "http://www.baidu.com";
+      window.open("http://www.jb51.net");
+    };
+    var checkFull = function () {
+      // 判断浏览器是否处于全屏状态 （需要考虑兼容问题）
+      // 火狐浏览器
+      var isFull =
+        document.mozFullScreen ||
+        document.fullScreen ||
+        // 谷歌浏览器及Webkit内核浏览器
+        document.webkitIsFullScreen ||
+        document.webkitRequestFullScreen ||
+        document.mozRequestFullScreen ||
+        document.msFullscreenEnabled;
+      if (isFull === undefined) {
+        isFull = false;
+      }
+      return isFull;
+    };
+    var fullScreen = false;
+    btn.onclick = function () {
+      if (!notClick) {
+        fullScreen = true;
+      } else {
+        fullScreen = !fullScreen;
+      }
+      if (fullScreen) {
+        ipt.value = "退出全屏";
+        var docElm = document.documentElement;
+        // W3C
+        if (docElm.requestFullscreen) {
+          docElm.requestFullscreen();
+        }
+        // FireFox
+        else if (docElm.mozRequestFullScreen) {
+          docElm.mozRequestFullScreen();
+          console.log("moz");
+        }
+        // Chrome等
+        else if (docElm.webkitRequestFullScreen) {
+          docElm.webkitRequestFullScreen();
+          console.log("google");
+        }
+        // IE11
+        else if (docElm.msRequestFullscreen) {
+          console.log("ie");
+          docElm.msRequestFullscreen();
+        }
+      } else {
+        ipt.value = "点击全屏";
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+    };
+  };
+</script>

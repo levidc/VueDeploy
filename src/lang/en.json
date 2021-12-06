@@ -1,0 +1,9 @@
+{
+  "username":"username",
+  "password":"password",
+  "checkUserName":"please check out your username",
+  "checkpassword":"please check your password",
+  "rememberAccount":"Remember account number",
+  "login":"login",
+  "changeLanguage":"change local language"
+}

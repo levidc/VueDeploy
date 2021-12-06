@@ -1,0 +1,9 @@
+{
+  "username":"用户名",
+  "password":"密码",
+  "checkUserName":"请输入正确的用户名",
+  "checkpassword":"请输入密码",
+  "rememberAccount":"记住账号",
+  "login":"登录",
+  "changeLanguage":"切换当前语言"
+}

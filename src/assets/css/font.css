@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "alter";
+  src: url("../fonts/DIN\ Alternate\ Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+#app {
+  font-family: "alter" !important;
+}
