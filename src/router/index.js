@@ -49,8 +49,9 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  base: '/VueDeploy/dist/',
   routes,
-  mode: 'history',
+  // mode: 'history',
   linkActiveClass: 'active'
 })
 
